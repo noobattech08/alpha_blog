@@ -1,0 +1,32 @@
+<% content_for :title, "New user" %>
+
+<h1>Login Page</h1>
+<br>
+
+<%= form_with(scope: :session, url: login_path ,class: "max-w-2xl mx-auto bg-white rounded-xl shadow-lg p-8 space-y-6") do |form| %>
+
+  <!-- Email -->
+  <div>
+    <%= form.label :email, class: "block text-sm font-medium text-gray-700 mb-2" %>
+    <%= form.email_field :email, placeholder: "Enter your email",
+                         class: "w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:outline-none transition" %>
+  </div>
+
+  <!-- Password -->
+  <div>
+    <%= form.label :password, class: "block text-sm font-medium text-gray-700 mb-2" %>
+    <%= form.password_field :password, placeholder: "Enter your password",
+                            class: "w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:outline-none transition" %>
+  </div>
+
+  <!-- Actions -->
+  <div class="flex items-center justify-between pt-4">
+    <%= link_to "← Back",
+                users_path,
+                class: "font-medium text-gray-600 hover:text-indigo-600 transition" %>
+
+    <%= form.submit "Login",
+                    class: "cursor-pointer rounded-lg bg-indigo-600 px-6 py-2.5 font-semibold text-white shadow hover:bg-indigo-700 focus:ring-2 focus:ring-indigo-300 transition" %>
+  </div>
+
+<% end %>

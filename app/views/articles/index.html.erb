@@ -1,0 +1,20 @@
+<!--<nav>-->
+<!--  <h1>Home | <%#= link_to 'Users', users_path%></h1>-->
+<!--</nav>-->
+<!---->
+<%#= render 'article' %>
+<!---->
+<%#= link_to 'Create New Article', new_article_path %>
+
+<%= render 'layouts/navigation' %>
+
+<%= render 'article' %>
+
+<div class="mt-10 flex justify-center">
+  <%= will_paginate @articles,
+                    previous_label: "← Previous",
+                    next_label: "Next →",
+                    class: "flex items-center gap-2" %>
+</div>
+
+<%#= link_to 'Create New Article', new_article_path %>

@@ -1,0 +1,11 @@
+<% if obj.errors.any? %>
+  <div style="color: red">
+    <h1>The following errors prohibited the <%= obj.class.name.downcase %> from being saved:</h1>
+    <h2><%= pluralize(obj.errors.count, "error") %></h2>
+    <ul>
+      <% obj.errors.each do |error| %>
+        <li><%= error.full_message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

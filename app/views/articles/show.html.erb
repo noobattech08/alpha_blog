@@ -1,0 +1,65 @@
+<!--<h1>Showing all article details</h1>-->
+<!---->
+<!--<p><strong>id: </strong><%#= @article.id %></p>-->
+<!--<p><strong>Title: </strong><%#= @article.title %></p>-->
+<!--<p><strong>Description: </strong><%#= @article.description %></p>-->
+<!--<p><strong>User: </strong><%#= @article.user.username %></p>-->
+<!--<p><strong>Email ID: </strong><%#= @article.user.email %></p>-->
+<!--<br>-->
+<%#= link_to 'Home', articles_path %>
+
+<div class="max-w-2xl mx-auto mt-10">
+  <div class="bg-white rounded-xl shadow-md overflow-hidden">
+
+    <!-- Header -->
+    <div class="bg-indigo-600 px-6 py-4">
+      <h1 class="text-xl font-semibold text-white">
+        Article Details
+      </h1>
+    </div>
+
+    <!-- Body -->
+    <div class="divide-y divide-gray-200">
+      <div class="flex justify-between items-center px-6 py-4">
+        <span class="font-medium text-gray-500">ID</span>
+        <span class="text-gray-900"><%= @article.id %></span>
+      </div>
+
+      <div class="flex justify-between items-center px-6 py-4">
+        <span class="font-medium text-gray-500">Title</span>
+        <span class="text-gray-900 font-semibold"><%= @article.title %></span>
+      </div>
+
+      <div class="px-6 py-4">
+        <p class="font-medium text-gray-500 mb-2">Description</p>
+        <p class="text-gray-700 leading-7">
+          <%= @article.description %>
+        </p>
+      </div>
+
+      <div class="flex justify-between items-center px-6 py-4">
+        <span class="font-medium text-gray-500">Author</span>
+        <span class="text-gray-900"><%= @article.user.username %></span>
+      </div>
+
+      <div class="flex justify-between items-center px-6 py-4">
+        <span class="font-medium text-gray-500">Email</span>
+        <span class="text-gray-900"><%= @article.user.email %></span>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="flex justify-between items-center bg-gray-50 px-6 py-4">
+      <%= link_to "← Back",
+                  articles_path,
+                  class: "text-indigo-600 hover:text-indigo-800 font-medium" %>
+
+      <% if logged_in? && (@article.user == current_user || current_user.admin?) %>
+        <%= link_to "Edit",
+                    edit_article_path(@article),
+                    class: "bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition" %>
+      <% end %>
+    </div>
+
+  </div>
+</div>
